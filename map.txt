@@ -1,0 +1,122 @@
+Modules list:
+-------------
+mmc3.o:
+    INESHDR           Offs=000000  Size=000008  Align=00001  Fill=0000
+    VECTORS           Offs=000000  Size=000006  Align=00001  Fill=0000
+init.o:
+    CODE              Offs=000000  Size=000095  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=000095  Size=000052  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000020  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000006  Align=00001  Fill=0000
+    CHR0              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR1              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR2              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR3              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR4              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR5              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR6              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR7              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR8              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR9              Offs=000000  Size=000400  Align=00800  Fill=0000
+    CHR10             Offs=000000  Size=001000  Align=00001  Fill=0000
+    CHR11             Offs=000000  Size=001000  Align=00001  Fill=0000
+bg.o:
+    CODE              Offs=0000E7  Size=00006D  Align=00001  Fill=0000
+player.o:
+    CODE              Offs=000154  Size=00013B  Align=00001  Fill=0000
+    RODATA            Offs=000020  Size=000008  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000006  Size=000007  Align=00001  Fill=0000
+pads.o:
+    CODE              Offs=00028F  Size=00004C  Align=00001  Fill=0000
+ppuclear.o:
+    CODE              Offs=0002DB  Size=000045  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+CHR0                  000000  0003FF  000400  00800
+CHR1                  000000  0003FF  000400  00800
+CHR10                 000000  000FFF  001000  00001
+CHR11                 000000  000FFF  001000  00001
+CHR2                  000000  0003FF  000400  00800
+CHR3                  000000  0003FF  000400  00800
+CHR4                  000000  0003FF  000400  00800
+CHR5                  000000  0003FF  000400  00800
+CHR6                  000000  0003FF  000400  00800
+CHR7                  000000  0003FF  000400  00800
+CHR8                  000000  0003FF  000400  00800
+CHR9                  000000  0003FF  000400  00800
+INESHDR               000000  000007  000008  00001
+ZEROPAGE              000000  00000C  00000D  00001
+CODE                  00C000  00C31F  000320  00001
+RODATA                00C400  00C427  000028  00001
+VECTORS               00FFFA  00FFFF  000006  00001
+
+
+Exports list by name:
+---------------------
+OAM                       000200 REA    cur_keys                  000002 RLZ    
+draw_bg                   00C0E7 RLA    draw_player_sprite        00C21A RLA    
+init_player               00C154 RLA    irq_handler               00C098 RLA    
+main                      00C099 RLA    move_player               00C167 RLA    
+new_keys                  000004 RLZ    nmi_handler               00C095 RLA    
+oam_used                  000001 RLZ    ppu_clear_nt              00C2DB RLA    
+ppu_clear_oam             00C2FD RLA    ppu_screen_on             00C30D RLA    
+read_pads                 00C28F RLA    reset_handler             00C000 RLA    
+
+
+
+Exports list by value:
+----------------------
+oam_used                  000001 RLZ    cur_keys                  000002 RLZ    
+new_keys                  000004 RLZ    OAM                       000200 REA    
+reset_handler             00C000 RLA    nmi_handler               00C095 RLA    
+irq_handler               00C098 RLA    main                      00C099 RLA    
+draw_bg                   00C0E7 RLA    init_player               00C154 RLA    
+move_player               00C167 RLA    draw_player_sprite        00C21A RLA    
+read_pads                 00C28F RLA    ppu_clear_nt              00C2DB RLA    
+ppu_clear_oam             00C2FD RLA    ppu_screen_on             00C30D RLA    
+
+
+
+Imports list:
+-------------
+OAM (main.o):
+    ppuclear.o                src/ppuclear.s:12
+    player.o                  src/global.inc:9
+cur_keys (main.o):
+    pads.o                    src/pads.s:17
+    player.o                  src/global.inc:10
+draw_bg (bg.o):
+    main.o                    src/global.inc:13
+draw_player_sprite (player.o):
+    main.o                    src/global.inc:16
+init_player (player.o):
+    main.o                    src/global.inc:16
+irq_handler (main.o):
+    mmc3.o                    src/mmc3.s:1
+main (main.o):
+    init.o                    src/global.inc:8
+move_player (player.o):
+    main.o                    src/global.inc:16
+new_keys (main.o):
+    pads.o                    src/pads.s:17
+nmi_handler (main.o):
+    mmc3.o                    src/mmc3.s:1
+oam_used (main.o):
+    player.o                  src/global.inc:10
+ppu_clear_nt (ppuclear.o):
+    bg.o                      src/global.inc:19
+ppu_clear_oam (ppuclear.o):
+    main.o                    src/global.inc:19
+    init.o                    src/global.inc:19
+ppu_screen_on (ppuclear.o):
+    main.o                    src/global.inc:19
+read_pads (pads.o):
+    main.o                    src/global.inc:22
+reset_handler (init.o):
+    mmc3.o                    src/mmc3.s:1
+
