@@ -1,6 +1,15 @@
 IF THIS FILE HAS NO LINE BREAKS:  View it in a web browser.  
 (Some text editors do not understand UNIX-style line breaks.)
 
+Big Dog
+=============
+
+This is my attempt to get a big dog on the screen, but right now, it's just a broken NROM template hacked into MMC3.
+
+I still can't get the character to move left like he did in PinoBatch's original NROM-template.
+
+To the bottom is the original README for PinoBatch's template.
+
 NROM template
 =============
 
